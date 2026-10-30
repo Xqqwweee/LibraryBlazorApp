@@ -1,5 +1,19 @@
-﻿<h3>AddBookForm</h3>
+﻿@using BoBPo.Interfaces.Services
+@inject IBookService bookService
 
+<h3>Dodaj ksiazke</h3>
+<div class="mb-3">
+    <label>Nazwa ksiazki</label>
+    <input class="form-control" />
+</div>
+<h3>Autor</h3>
+<div class="mb-3">
+    <label>Autor</label>
+    <input class="form-control" />
+</div>
+<button class="btn btn-primary">Dodaj ksiazke</button>
 @code {
-
+    private string nameOfBook = string.Empty;
+    private string authorName = string.Empty;
+    private string message = string.Empty;
 }
