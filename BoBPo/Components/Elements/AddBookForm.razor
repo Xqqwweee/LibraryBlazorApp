@@ -35,4 +35,12 @@
             message = "Wystapil blad podczas dodawania ksiazki";
         }
     }
+    private async Task GetAll()
+    {
+        var res = await bookService.GetAll();
+        if(res is not null)
+        {
+            
+        }
+    }
 }

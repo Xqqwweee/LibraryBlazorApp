@@ -1,0 +1,30 @@
+﻿@page "/books"
+@using BoBPo.Data
+@using BoBPo.Interfaces.Repositories
+@inject IBookRepository BookRepository
+
+<h3>Lista książek</h3>
+
+@if (books == null)
+{
+    <p>Ładowanie...</p>
+}
+else
+{
+    @foreach (var book in books)
+    {
+        <div>
+            <h4>@book.NameOfBook</h4>
+            <p>@book.AuthorName</p>
+        </div>
+    }
+}
+
+@code {
+    private List<Book> books = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        books = await BookRepository.GetAll();
+    }
+}

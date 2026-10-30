@@ -1,6 +1,7 @@
-﻿using BoBPo.Interfaces.Services;
+﻿using BoBPo.Data;
 using BoBPo.Interfaces.Repositories;
-using BoBPo.Data;
+using BoBPo.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BoBPo.Services
 {
@@ -31,6 +32,18 @@ namespace BoBPo.Services
                 return false;
             }
 
+        }
+        public async Task<List<Book>> GetAll()
+        {
+            try
+            {
+                var books = await _bookRepository.GetAll();
+                return books;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
     }
