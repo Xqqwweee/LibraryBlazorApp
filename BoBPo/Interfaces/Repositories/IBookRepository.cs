@@ -4,6 +4,6 @@ namespace BoBPo.Interfaces.Repositories
 {
     public interface IBookRepository
     {
-        public Task<bool> AddBookAsync(Book book);
+        Task<bool> AddBookAsync(Book book);
     }
 }

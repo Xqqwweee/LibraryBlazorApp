@@ -4,16 +4,35 @@
 <h3>Dodaj ksiazke</h3>
 <div class="mb-3">
     <label>Nazwa ksiazki</label>
-    <input class="form-control" />
+    <input class="form-control" @bind="nameOfBook"/>
 </div>
 <h3>Autor</h3>
 <div class="mb-3">
     <label>Autor</label>
-    <input class="form-control" />
+    <input class="form-control" @bind="authorName"/>
 </div>
-<button class="btn btn-primary">Dodaj ksiazke</button>
+<button class="btn btn-primary" @onclick="AddBook">Dodaj ksiazke</button>
+@if(!string.IsNullOrWhiteSpace(message))
+{
+    <p>@message</p>
+}
 @code {
     private string nameOfBook = string.Empty;
     private string authorName = string.Empty;
     private string message = string.Empty;
+
+    private async Task AddBook()
+    {
+        bool res = await bookService.AddBookAsync(nameOfBook, authorName);
+        if(res)
+        {
+            message = "Ksiazka zostala dodana";
+            nameOfBook = "";
+            authorName = "";
+        }
+        else
+        {
+            message = "Wystapil blad podczas dodawania ksiazki";
+        }
+    }
 }
